@@ -13,5 +13,7 @@ public interface MemberDao {
 	List<Member> getMembers();
 
 	void doJoin(Map<String, Object> param);
+
+	Member getMemberByLoginId(String loginId);
 	
 }

@@ -11,12 +11,35 @@
      ]]>
   </select>
   
-  <insert id="doJoin">
+  <select id="getMemberByLoginId" resultType="Member">
      <![CDATA[
-     	INSERT INTO `member`
-     	
-     	
-     	ORDER BY id DESC
+     	SELECT *
+     	FROM `member`
+     	WHERE loginId = #{loginId}
      ]]>
+  </select>
+  
+  <insert id="doJoin" useGeneratedKeys="true" keyProperty="id">
+     	INSERT INTO `Member`
+     	SET regDate = NOW(),
+     	updateDate = NOW(),
+     	displayStatus = 1,
+     	name = #{name},
+     	nickName = #{nickName},
+     	loginId = #{loginId},
+     	loginPw = #{loginPw},
+     	phoneNo = #{phoneNo},
+     	emergencyNo = #{emergencyNo},
+     	email = #{email},
+     	address = #{address},
+     	<if test="job != null">
+     		job = #{job},	
+     	</if>
+     	<if test="career != null">
+     		career = #{career},	
+     	</if>
+   	    <if test="agency != null">
+   	    	agency = #{agency}
+   	    </if>
   </insert>
 </mapper>

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import com.quantom.audition_tree.dao.MemberDao;
 import com.quantom.audition_tree.dto.Member;
+import com.quantom.audition_tree.util.Util;
 
 @Service
 public class MemberService {
@@ -21,7 +22,12 @@ public class MemberService {
 	public int doJoin(Map<String, Object> param) {
 		memberDao.doJoin(param);
 		
-		return Integer.parseInt((String) param.get("id")); 
+		return Util.getAsInt(param.get("id"),-1); 
+	}
+
+	public Member getMemberByLoginId(String loginId) {
+		return memberDao.getMemberByLoginId(loginId);
+		
 	}
 
 }

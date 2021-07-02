@@ -12,8 +12,6 @@
 	
 	<c:forEach items="${members}" var="member">
 		id : ${member.id} <br />
-		id : ${member.id} <br /> 
-		
 	</c:forEach>
 
 </body>

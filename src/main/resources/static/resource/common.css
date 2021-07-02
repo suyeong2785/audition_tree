@@ -1,0 +1,17 @@
+html,body {
+	margin:0;
+	padding:0;
+} 
+
+table {
+	border:1px solid black;
+	border-collapse: collapse; 
+}
+th,td {
+	border:1px solid black;
+	padding: 5px;
+}
+textarea {
+	height:300px;
+	resize: none;
+}

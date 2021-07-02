@@ -11,6 +11,6 @@ public class HomeController {
 	@RequestMapping("/usr/home/main")
 	public String showHome() {
 		
-		return "HI!!!!";
+		return "HI!!!!!!!!!!!";
 	}
 }

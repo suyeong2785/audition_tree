@@ -203,7 +203,7 @@
 
 
 <div class="container m-auto flex justify-center">
-	<form class="formLogin"  method="POST" onsubmit="JoinForm__checkAndSubmit(this); return false;">
+	<form class="formLogin" action="doJoin" method="POST" onsubmit="JoinForm__checkAndSubmit(this); return false;">
 		<input type="hidden" name="genFileIdsStr" />
 		<table>
 			<colgroup>

@@ -10,16 +10,22 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartRequest;
 
 import com.quantom.audition_tree.dto.Member;
 import com.quantom.audition_tree.dto.ResultData;
+import com.quantom.audition_tree.service.GenFileService;
 import com.quantom.audition_tree.service.MemberService;
 
 @Controller
 public class MemberController {
 	@Autowired
 	MemberService memberService;
-
+	
+	@Autowired
+	GenFileService genFileService;
+	
 	@RequestMapping("/usr/member/showList")
 	public String showList(Model model) {
 
@@ -39,7 +45,8 @@ public class MemberController {
 	@RequestMapping("/usr/member/doJoin")
 	public String doJoin(Model model, @RequestParam Map<String, Object> param) {
 
-		int id = (int) memberService.doJoin(param);
+		int newMemberId = (int) memberService.doJoin(param);
+		
 
 		return "<script>alert('회원가입되셨습니다.'); location.replace('../home/main'); </script>";
 	}
@@ -54,4 +61,5 @@ public class MemberController {
 		return new ResultData("F-1", "이미 사용중인 아이디입니다.");
 
 	}
+	
 }

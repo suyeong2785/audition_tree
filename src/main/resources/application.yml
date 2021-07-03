@@ -6,8 +6,12 @@ spring:
   mvc:
     view:      prefix: /WEB-INF/jsp/
       suffix: .jsp  datasource:
-    driver-class-name: com.mysql.cj.jdbc.Driver    url: jdbc:mysql://localhost:3306/audition_tree?serverTimezone=UTC&characterEncoding=UTF-8
+    driver-class-name: net.sf.log4jdbc.sql.jdbcapi.DriverSpy    url: jdbc:log4jdbc:mysql://127.0.0.1:3306/audition_tree?useUnicode=true&characterEncoding=utf8&autoReconnect=true&serverTimezone=Asia/Seoul&useOldAliasMetadataBehavior=true&zeroDateTimeNehavior=convertToNull
     username: root
     password:
 mybatis:
-  type-aliases-package: com.quantom.audition_tree.dto  
+  type-aliases-package: com.quantom.audition_tree.dtocustom:
+  genFileDirPath: C:/work/audition_tree 
+  logging:
+   dir: log
+   level: debug

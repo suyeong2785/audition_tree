@@ -13,7 +13,7 @@
 <!-- 카카오 주소 API 불러오기 -->
 
 <script>
-	const LoginForm__checkAndSubmitDone = false;
+	const JoinForm__checkAndSubmitDone = false;
 
 	function checkLoginIdDup() {
 		const form = $('.formLogin').get(0);
@@ -39,8 +39,8 @@
 		}, 'json');
 	}
 
-	function checkForm(form) {
-		if (LoginForm__checkAndSubmitDone) {
+	function JoinForm__checkAndSubmit(form) {
+		if (JoinForm__checkAndSubmitDone) {
 			return;
 		}
 
@@ -159,9 +159,39 @@
 			return;
 		}
 
-		form.submit();
-		LoginForm__checkAndSubmitDone = true;
-
+		const submitForm = function(data) {
+			if (data) {
+				form.genFileIdsStr.value = data.body.genFileIdsStr;
+			}
+			
+			form.submit();
+			JoinForm__checkAndSubmitDone = true;
+		}
+		function startUpload(onSuccess) {
+			if (!form.file__member__0__common__attachment__1.value) {
+				onSuccess();
+				return;
+			}
+			
+			const formData = new FormData(form);
+			
+			$.ajax({
+				url : '/common/genFile/doUpload',
+				data : formData,
+				processData : false,
+				contentType : false,
+				dataType : "json",
+				type : 'POST',
+				success : onSuccess
+			});
+			
+			// 파일을 업로드 한 후
+			// 기다린다.
+			// 응답을 받는다.
+			// onSuccess를 실행한다.
+		}
+		
+		startUpload(submitForm);
 	}
 
 	$(document).ready(function() {
@@ -173,8 +203,8 @@
 
 
 <div class="container m-auto flex justify-center">
-	<form class="formLogin" action="doJoin" method="POST"
-		onsubmit="checkForm(this); return false;">
+	<form class="formLogin"  method="POST" onsubmit="JoinForm__checkAndSubmit(this); return false;">
+		<input type="hidden" name="genFileIdsStr" />
 		<table>
 			<colgroup>
 				<col width="200px" />
@@ -211,14 +241,22 @@
 					</td>
 				</tr>
 				<tr>
-					<th>NickName</th>
+					<th>활동명</th>
 					<td>
 						<input class="w-full" name="nickName" type="text"
 							placeholder="활동명을 입력해주세요" />
 					</td>
 				</tr>
 				<tr>
-					<th>Phone</th>
+					<th>프로필 이미지</th>
+					<td>
+						<input accept="image/gif, image/jpeg, image/png" type="file"
+							name="file__member__0__common__attachment__1" class="w-full"
+							placeholder="프로필 이미지를 선택해주세요" />
+					</td>
+				</tr>
+				<tr>
+					<th>전화번호</th>
 					<td>
 						<input class="w-full" name="phoneNo" type="tel"
 							placeholder="전화번호를 입력해주세요" />
@@ -238,7 +276,8 @@
 							placeholder="주소">
 						<br>
 						<div class="flex">
-							<input class="flex-grow" type="text"  id="detailAddres" placeholder="상세주소">
+							<input class="flex-grow" type="text" id="detailAddres"
+								placeholder="상세주소">
 							<input
 								class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
 								type="button" onclick="sample3_execDaumPostcode()"
@@ -317,10 +356,8 @@
 												document
 														.getElementById("address").value = addr;
 												// 커서를 상세주소 필드로 이동한다.
-												document
-														.getElementById(
-																"detailAddres")
-														.focus();
+												document.getElementById(
+														"detailAddres").focus();
 
 												// iframe을 넣은 element를 안보이게 한다.
 												// (autoClose:false 기능을 이용한다면, 아래 코드를 제거해야 화면에서 사라지지 않는다.)
@@ -369,8 +406,7 @@
 				<tr>
 					<th>경력</th>
 					<td>
-						<textarea class="w-full" name="career" type="text"
-							placeholder="경력사항을 입력해주세요" /></textarea>
+						<textarea class="w-full" name="career" placeholder="경력사항을 입력해주세요" /></textarea>
 					</td>
 				</tr>
 				<tr>

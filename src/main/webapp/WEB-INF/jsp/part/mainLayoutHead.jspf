@@ -1,0 +1,96 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+<%@ include file="head.jspf"%>
+<header class="top-bar bg-white">
+	<div class="flex justify-center items-center text-white text-center h-12 md:h-24 text-2xl md:text-4xl">
+		<div class="flex justify-center items-center md:flex-grow w-16 h-full  bg-blue-500 ">
+			<i class="fas fa-list "></i>
+		</div>
+		<div class="flex-grow-9 h-full">
+			<input class="bg-gray-300 block w-full h-full text-xl px-4 " type="text"
+				placeholder="공고검색...." />
+		</div>
+		<div class="flex justify-center items-center md:flex-grow w-16 h-full  bg-gray-300 text-white text-center h-12 md:h-24 text-2xl md:text-4xl">
+			<i class="fas fa-search"></i>
+		</div>
+		<div class="flex justify-center items-center md:flex-grow w-16 h-full bg-blue-500 text-white text-center h-12 md:h-24 text-2xl md:text-4xl">
+			<i class="fas fa-sign-in-alt"></i>
+		</div>
+		
+	</div>
+	<div class="container mx-auto h-full flex ">
+		<a href="/adm/home/main" class="logo flex items-center ml-2 ">
+			<span class="w-20 hidden md:block">
+				<img src="/resource/img/logo_1@3x.png" alt="" />
+			</span>
+		</a>
+
+		<div class="flex-grow hidden md:block"></div>
+
+		<nav class="menu-box-1 hidden md:block">
+			<ul class="flex h-full">
+				<li>
+					<a class="text-xl px-4 flex items-center h-full hover:underline "
+						href="/usr/home/main">
+						<span class="hidden md:block">홈</span>
+						<span class="block md:hidden">
+							<i class="fas fa-house-user"></i>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a class="text-xl px-4 flex items-center h-full hover:underline"
+						href="/usr/member/list">
+						<span class="hidden md:block">회원 가입</span>
+						<span class="block md:hidden">
+							<i class="fas fa-user-plus"></i>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a class="text-xl px-4 flex items-center h-full hover:underline"
+						href="/usr/board/list">
+						<span class="hidden md:block">캐스팅 공고작성</span>
+						<span class="block md:hidden">
+							<i class="fas fa-list-ol"></i>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a class="text-xl px-4 flex items-center h-full hover:underline"
+						href="/usr/article/list?boardId=1">
+						<span class="hidden md:block">오디션 지원</span>
+					</a>
+				</li>
+				<li>
+					<a class="text-xl px-4 flex items-center h-full hover:underline"
+						href="/usr/member/doLogout">
+						<span class="hidden md:block">마이페이지</span>
+						<span class="block md:hidden">
+							<i class="far fa-user-circle"></i>
+						</span>
+					</a>
+				</li>
+
+				<li>
+					<a class="text-xl px-4 flex items-center h-full hover:underline"
+						href="/usr/member/doLogout">
+						<span class="hidden md:block">고객센터</span>
+						<span class="block md:hidden">
+							<i class="far fa-question-circle"></i>
+						</span>
+					</a>
+				</li>
+				<li>
+					<a class="text-xl px-4 flex items-center h-full hover:underline"
+						href="/usr/member/doLogout">
+						<span class="hidden md:block">로그아웃</span>
+						<span class="block md:hidden">
+							<i class="fas fa-sign-out-alt"></i>
+						</span>
+					</a>
+				</li>
+			</ul>
+		</nav>
+	</div>
+</header>

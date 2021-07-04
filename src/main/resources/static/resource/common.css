@@ -21,8 +21,21 @@
 
 html > body {
   font-family: 'LotteMartDream', sans-serif;
+  word-break:keep-all
+}
+/* 라이브러리 */
+.height-100 {
+	height: 100%;
+}
+.flex-grow-9 {
+	flex-grow: 9
 }
 
+.flex-grow-3 {
+	flex-grow: 3
+}
+
+/* 커스텀 */
 .logo {
   font-size:2rem;
   display:inline-flex;

@@ -5,7 +5,7 @@
 
 <c:set var="pageTitle" value="회원가입페이지" />
 
-<%@ include file="../part/head.jsp"%>
+<%@ include file="../part/mainLayoutHead.jspf"%>
 
 <!-- lodash 불러오기 -->
 <script
@@ -203,15 +203,7 @@
 <section class="section-login">
 	<div
 		class="container mx-auto min-h-screen flex items-center justify-center">
-		<div class="w-full">
-			<div class="logo-bar flex justify-center mt-3">
-				<a href="#" class="logo">
-					<span>
-						<i class="fas fa-tree"></i>
-					</span>
-					<span>AUDITION TREE</span>
-				</a>
-			</div>
+		<div class="w-full ">
 			<form
 				class="formLogin bg-white shadow-md rounded px-8 pt-6 pb-8 mt-4"
 				action="doJoin" method="POST"
@@ -322,14 +314,14 @@
 							type="text" id="address" name="address" placeholder="주소">
 						<br>
 						<div>
-							<div class="flex">
+							<div class="flex mt-2">
 								<input
 									class="shadow appearance-none border rounded flex-grow py-2 px-3 text-grey-darker"
 									type="text" id="detailAddres" placeholder="상세주소">
 								<input
-									class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded"
+									class="bg-blue-500 hover:bg-blue-700  text-white font-bold py-2 px-4 rounded"
 									type="button" onclick="sample3_execDaumPostcode()"
-									value="우편번호 찾기">
+									value="찾기">
 							</div>
 
 							<div id="wrap" class="flex flex-grow"
@@ -407,7 +399,7 @@
 </section>
 
 <script
-	src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+	async="async" src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script>
 	// 우편번호 찾기 찾기 화면을 넣을 element
 	var element_wrap = document.getElementById('wrap');
@@ -481,4 +473,4 @@
 		element_wrap.style.display = 'block';
 	}
 </script>
-<%@ include file="../part/foot.jsp"%>
+<%@ include file="../part/foot.jspf"%>
